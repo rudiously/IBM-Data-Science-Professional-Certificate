@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trek Details - Nivant Trekkers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body class="khalita-body trek-page">
+    <!-- Back Button -->
+    <a href="index.html" class="back-to-khalita">← Back</a>
+
+    <!-- Main Trek Document -->
+    <div class="khalita-container trek-document">
+        <!-- Trek Header -->
+        <div class="trek-header">
+            <h1 class="trek-title-main" id="trekPageTitle">Trek Details</h1>
+            <div class="decorative-line"></div>
+        </div>
+
+        <!-- Fort Details -->
+        <section class="fort-details-section fade-in">
+            <h2 class="section-heading">Fort Details</h2>
+            <div class="fort-record" id="fortCard"></div>
+        </section>
+
+        <!-- Historical Significance -->
+        <section class="history-section fade-in">
+            <h2 class="section-heading">Historical Significance</h2>
+            <div class="history-scroll" id="historyContent"></div>
+        </section>
+
+        <!-- Trek Gallery -->
+        <section class="gallery-section fade-in">
+            <h2 class="section-heading">Gallery</h2>
+            <div class="image-gallery-grid" id="imageGallery"></div>
+        </section>
+
+        <!-- Pickup Points -->
+        <section class="pickup-section fade-in">
+            <h2 class="section-heading">Pune Pickup Points</h2>
+            <div class="pickup-scroll" id="pickupTable"></div>
+        </section>
+
+        <!-- Trek Itinerary -->
+        <section class="itinerary-section fade-in">
+            <h2 class="section-heading">Itinerary</h2>
+            <div class="yojana-timeline" id="timeline"></div>
+        </section>
+
+        <!-- Trek Fees -->
+        <section class="fees-section fade-in">
+            <h2 class="section-heading">Trek Fees</h2>
+            <div class="fees-scroll" id="feesCard"></div>
+        </section>
+
+        <!-- Inclusions -->
+        <section class="inclusions-section fade-in">
+            <h2 class="section-heading">Inclusions</h2>
+            <div class="inclusions-list" id="inclusionsGrid"></div>
+        </section>
+
+        <!-- Things to Carry -->
+        <section class="carry-section fade-in">
+            <h2 class="section-heading">Things to Carry</h2>
+            <div class="carry-list" id="carryGrid"></div>
+        </section>
+
+        <!-- Instructions -->
+        <section class="instructions-section fade-in">
+            <h2 class="section-heading">Important Instructions</h2>
+            <div class="instructions-scroll" id="instructionsList"></div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section fade-in" id="contact">
+            <h2 class="section-heading">Contact & Registration</h2>
+            <div class="contact-scroll" id="contactContent"></div>
+        </section>
+
+        <!-- Signature -->
+        <div class="khalita-closing">
+            <p class="closing-text">Jai Bhavani, Jai Shivaji</p>
+            <div class="signature">
+                <p class="signature-text">— Nivant Trekkers</p>
+                <div class="signature-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="khalita-footer">
+        <p>© 2026 Nivant Trekkers | <a href="admin.html" class="admin-link-footer">Admin</a></p>
+    </div>
+
+    <!-- Supabase Backend -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Supabase Configuration
+        const SUPABASE_URL = 'https://setqjejhlomluanzhxpk.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNldHFqZWpobG9tbHVhbnpoeHBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0NzY2MjcsImV4cCI6MjA4NjA1MjYyN30.gyU1ZMZ3-wsLij0iMzHK76C_xI9gNHvwwMt1FI5ZnY0';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        const SupabaseDB = {
+            async loadTrekData() {
+                try {
+                    const { data, error } = await supabase.from('trek_data').select('data').limit(1).single();
+                    if (error) { if (error.code === 'PGRST116') return null; throw error; }
+                    console.log('✅ Loaded from Supabase!');
+                    return data.data;
+                } catch (error) { console.error('❌ Error:', error); return null; }
+            }
+        };
+    </script>
+    <!-- Main Script -->
+    <script src="script.js"></script>
+</body>
+</html>

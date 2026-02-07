@@ -1,0 +1,39 @@
+========================================
+NIVANT TREKKERS - ADMIN ACCESS INFO
+========================================
+
+🔐 ADMIN PANEL ACCESS
+---------------------
+File: manage-trek-panel-2024.html
+Password: NivantTrek@2024!
+
+⚠️ IMPORTANT: Change this password before hosting!
+   Edit line 186 in manage-trek-panel-2024.html
+
+📍 HOW TO ACCESS AFTER HOSTING
+------------------------------
+If hosted at: yourwebsite.com
+Admin URL: yourwebsite.com/manage-trek-panel-2024.html
+
+🚀 READY TO HOST
+----------------
+1. Go to netlify.com
+2. Sign up (free)
+3. Drag and drop your entire folder
+4. Done!
+
+✅ SECURITY FEATURES
+--------------------
+✓ Admin file has obscure name
+✓ Password protected login
+✓ No links to admin on website
+✓ Old admin.html deleted
+
+📝 NOTES
+--------
+- Keep this file private
+- Don't share admin URL publicly
+- Change password regularly
+- Bookmark your admin URL
+
+========================================
