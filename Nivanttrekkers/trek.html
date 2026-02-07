@@ -102,12 +102,12 @@
         // Supabase Configuration
         const SUPABASE_URL = 'https://setqjejhlomluanzhxpk.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNldHFqZWpobG9tbHVhbnpoeHBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0NzY2MjcsImV4cCI6MjA4NjA1MjYyN30.gyU1ZMZ3-wsLij0iMzHK76C_xI9gNHvwwMt1FI5ZnY0';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        let supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         
         const SupabaseDB = {
             async loadTrekData() {
                 try {
-                    const { data, error } = await supabase.from('trek_data').select('data').limit(1).single();
+                    const { data, error } = await supabaseClient.from('trek_data').select('data').limit(1).single();
                     if (error) { if (error.code === 'PGRST116') return null; throw error; }
                     console.log('✅ Loaded from Supabase!');
                     return data.data;
